@@ -17,6 +17,17 @@ func NewCategoryHandler(service services.CategoryService) *CategoryHandler {
 
 func (h *CategoryHandler) HandleCategories(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
+<<<<<<< HEAD
+=======
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+	if r.Method == http.MethodOptions {
+		w.WriteHeader(http.StatusOK)
+		return
+	}
+>>>>>>> 5c36bd9 (perbaikan)
 
 	switch r.Method {
 	case http.MethodGet:
