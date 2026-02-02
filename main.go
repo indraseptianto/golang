@@ -52,3 +52,9 @@ func main() {
 	log.Fatal(http.ListenAndServe(":"+cfg.Port, mux))
 >>>>>>> 5c36bd9 (perbaikan)
 }
+productRepo := repositories.NewProductRepository(db)
+productService := services.NewProductService(productRepo)
+productHandler := handlers.NewProductHandler(productService)
+
+http.HandleFunc("/products", productHandler.HandleProducts)
+http.HandleFunc("/products/", productHandler.HandleProductByID)
